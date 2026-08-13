@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOLTÉO — Studio de coaching premium</title>
+<meta name="description" content="VOLTÉO, studio de coaching premium. Un accompagnement sur-mesure pour une transformation durable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivoire:#F6F3ED;
+    --ivoire-deep:#F0EBE1;
+    --encre:#26251F;
+    --encre-soft:#4A4740;
+    --argile:#B8724A;
+    --argile-soft:#D9A683;
+    --bronze:#8A7B5C;
+    --ligne:#E2DDD0;
+    --blanc:#FFFFFF;
+    --max:1180px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    background:var(--ivoire);
+    color:var(--encre);
+    font-family:'Inter', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+    color:var(--encre);
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+
+  .eyebrow{
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--argile);
+    font-weight:600;
+    display:inline-block;
+    margin-bottom:18px;
+  }
+
+  /* ---------- Focus states ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--argile);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 30px;
+    border-radius:100px;
+    font-size:14.5px;
+    font-weight:500;
+    letter-spacing:0.01em;
+    cursor:pointer;
+    transition:all .35s ease;
+    border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--encre);
+    color:var(--ivoire);
+  }
+  .btn-primary:hover{
+    background:var(--argile);
+    transform:translateY(-1px);
+  }
+  .btn-ghost{
+    border-color:var(--encre);
+    color:var(--encre);
+    background:transparent;
+  }
+  .btn-ghost:hover{
+    border-color:var(--argile);
+    color:var(--argile);
+  }
+  .btn-light{
+    background:var(--ivoire);
+    color:var(--encre);
+  }
+  .btn-light:hover{
+    background:var(--argile-soft);
+  }
+
+  /* ---------- Pulse line (signature element) ---------- */
+  .pulse{
+    width:100%;
+    height:34px;
+    display:block;
+    overflow:visible;
+  }
+  .pulse path{
+    fill:none;
+    stroke:var(--argile-soft);
+    stroke-width:1.4;
+    stroke-linecap:round;
+    stroke-dasharray:600;
+    stroke-dashoffset:600;
+    opacity:0;
+    transition:stroke-dashoffset 1.8s cubic-bezier(.16,.8,.3,1), opacity .6s ease;
+  }
+  .pulse.in-view path{
+    stroke-dashoffset:0;
+    opacity:1;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(246,243,237,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    border-bottom:1px solid var(--ligne);
+    box-shadow:0 4px 20px rgba(38,37,31,0.03);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 32px;
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:21px;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  .nav-links{
+    display:flex;
+    gap:38px;
+    list-style:none;
+  }
+  .nav-links a{
+    font-size:14px;
+    color:var(--encre-soft);
+    position:relative;
+    padding:4px 0;
+    transition:color .3s ease;
+  }
+  .nav-links a:hover{color:var(--encre);}
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--argile);
+    transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex; align-items:center; gap:28px;}
+  .burger{display:none; background:none; border:none; cursor:pointer; padding:8px;}
+  .burger span{display:block; width:22px; height:1.5px; background:var(--encre); margin:5px 0; transition:.3s;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    padding-top:90px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2000&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center 30%;
+    transform:scale(1.08);
+    animation:heroIn 2.4s cubic-bezier(.16,.8,.3,1) forwards;
+  }
+  @keyframes heroIn{ to{ transform:scale(1); } }
+  .hero-bg::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(38,37,31,0.12) 0%, rgba(38,37,31,0.05) 40%, rgba(38,37,31,0.55) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:0 32px 90px;
+    max-width:var(--max);
+    margin:0 auto;
+    color:var(--ivoire);
+  }
+  .hero .eyebrow{color:var(--argile-soft);}
+  .hero h1{
+    font-size:clamp(40px, 6.4vw, 84px);
+    max-width:14ch;
+    margin-bottom:26px;
+    opacity:0;
+    animation:fadeUp 1s ease .3s forwards;
+  }
+  .hero p{
+    font-size:18px;
+    max-width:46ch;
+    color:#F1ECE1;
+    margin-bottom:38px;
+    opacity:0;
+    animation:fadeUp 1s ease .5s forwards;
+  }
+  .hero-actions{
+    display:flex; gap:16px; flex-wrap:wrap;
+    opacity:0;
+    animation:fadeUp 1s ease .7s forwards;
+  }
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .scroll-cue{
+    position:absolute;
+    bottom:28px; left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    color:var(--ivoire);
+    opacity:.75;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
+  .scroll-cue .line{
+    width:1px; height:34px;
+    background:var(--ivoire);
+    opacity:.6;
+    animation:scrollLine 2.2s ease-in-out infinite;
+  }
+  @keyframes scrollLine{
+    0%{transform:scaleY(0); transform-origin:top;}
+    50%{transform:scaleY(1); transform-origin:top;}
+    50.01%{transform-origin:bottom;}
+    100%{transform:scaleY(0); transform-origin:bottom;}
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:130px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:70px;
+  }
+  .section-head h2{
+    font-size:clamp(30px, 3.6vw, 46px);
+  }
+  .section-head p{
+    font-size:17px;
+    color:var(--encre-soft);
+    margin-top:18px;
+    max-width:52ch;
+  }
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .9s cubic-bezier(.16,.8,.3,1), transform .9s cubic-bezier(.16,.8,.3,1);
+  }
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  /* ---------- Méthode ---------- */
+  .methode{background:var(--ivoire-deep);}
+  .piliers{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--ligne);
+    border:1px solid var(--ligne);
+  }
+  .pilier{
+    background:var(--ivoire-deep);
+    padding:48px 40px;
+    transition:background .4s ease;
+  }
+  .pilier:hover{background:var(--blanc);}
+  .pilier .tag{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--argile);
+    margin-bottom:22px;
+    display:block;
+  }
+  .pilier h3{
+    font-size:23px;
+    margin-bottom:14px;
+    font-weight:500;
+  }
+  .pilier p{
+    font-size:15px;
+    color:var(--encre-soft);
+  }
+  .pilier-icon{width:30px; height:30px; margin-bottom:26px; stroke:var(--encre); fill:none; stroke-width:1.3;}
+
+  @media (max-width:820px){
+    .piliers{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Programmes ---------- */
+  .programmes-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .prog-card{
+    background:var(--blanc);
+    border:1px solid var(--ligne);
+    border-radius:6px;
+    overflow:hidden;
+    transition:transform .5s cubic-bezier(.16,.8,.3,1), box-shadow .5s ease;
+  }
+  .prog-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 24px 50px rgba(38,37,31,0.09);
+  }
+  .prog-img{
+    height:230px;
+    background-size:cover;
+    background-position:center;
+  }
+  .prog-body{padding:32px 30px 34px;}
+  .prog-body .eyebrow{margin-bottom:10px; font-size:11.5px;}
+  .prog-body h3{font-size:22px; margin-bottom:12px;}
+  .prog-body p{font-size:14.5px; color:var(--encre-soft); margin-bottom:22px;}
+  .prog-link{
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--encre);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border-bottom:1px solid var(--encre);
+    padding-bottom:2px;
+    transition:.3s;
+  }
+  .prog-link:hover{color:var(--argile); border-color:var(--argile); gap:12px;}
+
+  @media (max-width:900px){
+    .programmes-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Coach ---------- */
+  .coach{
+    display:grid;
+    grid-template-columns:0.85fr 1fr;
+    gap:80px;
+    align-items:center;
+  }
+  .coach-img{
+    aspect-ratio:4/5;
+    background-image:url('https://images.unsplash.com/photo-1607962837359-5e7e89f86776?q=80&w=1400&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    border-radius:6px;
+  }
+  .coach-quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:clamp(21px,2.4vw,28px);
+    line-height:1.5;
+    color:var(--encre);
+    margin:26px 0 30px;
+  }
+  .coach-name{font-weight:600; font-size:15px;}
+  .coach-role{font-size:13.5px; color:var(--encre-soft); margin-top:2px;}
+  .coach-bio{font-size:15.5px; color:var(--encre-soft); margin-top:24px; max-width:48ch;}
+
+  @media (max-width:900px){
+    .coach{grid-template-columns:1fr; gap:44px;}
+  }
+
+  /* ---------- Résultats ---------- */
+  .resultats{background:var(--encre); color:var(--ivoire);}
+  .resultats .eyebrow{color:var(--argile-soft);}
+  .resultats .section-head h2{color:var(--ivoire);}
+  .resultats .section-head p{color:#C9C5B8;}
+
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:rgba(246,243,237,0.12);
+    border-top:1px solid rgba(246,243,237,0.14);
+    border-bottom:1px solid rgba(246,243,237,0.14);
+    margin-bottom:80px;
+  }
+  .stat{
+    background:var(--encre);
+    padding:40px 26px;
+    text-align:center;
+  }
+  .stat .num{
+    font-family:'Fraunces', serif;
+    font-size:clamp(32px, 3.4vw, 48px);
+    color:var(--argile-soft);
+  }
+  .stat .lbl{
+    font-size:12.5px;
+    color:#B7B2A3;
+    margin-top:8px;
+    letter-spacing:.03em;
+  }
+
+  .testimonial{
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .testimonial blockquote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(24px, 3vw, 34px);
+    line-height:1.5;
+  }
+  .testimonial cite{
+    display:block;
+    font-style:normal;
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    color:#B7B2A3;
+    margin-top:30px;
+  }
+
+  @media (max-width:820px){
+    .stats-row{grid-template-columns:repeat(2, 1fr);}
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-inner{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+  }
+  .contact-info h2{font-size:clamp(30px,3.6vw,44px); margin-bottom:22px;}
+  .contact-info p{color:var(--encre-soft); font-size:16px; max-width:42ch; margin-bottom:34px;}
+  .contact-detail{margin-bottom:18px; font-size:14.5px;}
+  .contact-detail span{display:block; color:var(--bronze); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:4px;}
+
+  .form-card{
+    background:var(--blanc);
+    border:1px solid var(--ligne);
+    border-radius:8px;
+    padding:44px;
+  }
+  .field{margin-bottom:22px;}
+  .field label{
+    display:block;
+    font-size:12.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--bronze);
+    margin-bottom:9px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    border:none;
+    border-bottom:1px solid var(--ligne);
+    background:transparent;
+    padding:10px 2px;
+    font-family:'Inter', sans-serif;
+    font-size:15px;
+    color:var(--encre);
+    transition:border-color .3s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--argile);
+  }
+  .field textarea{resize:vertical; min-height:80px;}
+  .form-card .btn-primary{width:100%; justify-content:center; margin-top:8px;}
+
+  @media (max-width:900px){
+    .contact-inner{grid-template-columns:1fr;}
+    .form-card{padding:32px 26px;}
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ivoire-deep);
+    border-top:1px solid var(--ligne);
+    padding:50px 0 34px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
+    padding-bottom:34px;
+    border-bottom:1px solid var(--ligne);
+    margin-bottom:26px;
+  }
+  .footer-links{display:flex; gap:30px; list-style:none; flex-wrap:wrap;}
+  .footer-links a{font-size:13.5px; color:var(--encre-soft);}
+  .footer-links a:hover{color:var(--argile);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    font-size:12.5px;
+    color:var(--bronze);
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  @media (max-width:600px){
+    section{padding:90px 0;}
+    .hero-content{padding-bottom:60px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <nav class="nav">
+    <a href="#top" class="logo">VOLTÉO</a>
+    <ul class="nav-links">
+      <li><a href="#methode">Méthode</a></li>
+      <li><a href="#programmes">Programmes</a></li>
+      <li><a href="#coach">Le Coach</a></li>
+      <li><a href="#resultats">Résultats</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">Réserver un appel</a>
+    </div>
+    <button class="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom:0; padding-top:0;">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="eyebrow">Studio de coaching premium</span>
+      <h1>Prenez le temps de<br>devenir qui vous êtes.</h1>
+      <p>VOLTÉO accompagne une transformation durable, à votre rythme — sans pression, sans injonction, avec la rigueur d'un vrai suivi sur-mesure.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Réserver un appel découverte</a>
+        <a href="#methode" class="btn btn-light">Découvrir la méthode</a>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- MÉTHODE -->
+  <section class="methode" id="methode">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">La méthode</span>
+        <h2>Trois piliers, un seul rythme : le vôtre.</h2>
+        <p>Pas de programme générique. VOLTÉO construit un accompagnement qui s'ajuste à votre vie, votre énergie et vos objectifs réels.</p>
+      </div>
+    </div>
+    <div class="wrap reveal">
+      <div class="piliers">
+        <div class="pilier">
+          <svg class="pilier-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+          <span class="tag">Écouter</span>
+          <h3>Un bilan sans jugement</h3>
+          <p>Premier échange approfondi sur votre corps, votre histoire et votre rythme de vie — pas de questionnaire standard.</p>
+        </div>
+        <div class="pilier">
+          <svg class="pilier-icon" viewBox="0 0 24 24"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg>
+          <span class="tag">Ajuster</span>
+          <h3>Un programme évolutif</h3>
+          <p>La méthode se réajuste chaque semaine selon vos retours. Rien n'est figé, tout progresse avec vous.</p>
+        </div>
+        <div class="pilier">
+          <svg class="pilier-icon" viewBox="0 0 24 24"><path d="M5 4v16M5 4l14 5-14 5"/></svg>
+          <span class="tag">Ancrer</span>
+          <h3>Des habitudes qui durent</h3>
+          <p>L'objectif n'est pas la performance ponctuelle, mais une transformation qui tient dans le temps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <svg class="pulse" viewBox="0 0 1180 34" preserveAspectRatio="none">
+      <path d="M0,17 C 150,17 180,4 220,17 C 260,30 290,17 340,17 L 840,17 C 890,17 920,4 960,17 C 1000,30 1030,17 1180,17"/>
+    </svg>
+  </div>
+
+  <!-- PROGRAMMES -->
+  <section id="programmes">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Programmes</span>
+        <h2>Trois formats, une même exigence.</h2>
+        <p>Chaque programme est pensé comme un point de départ, adapté ensuite à votre progression réelle.</p>
+      </div>
+      <div class="programmes-grid reveal">
+        <div class="prog-card">
+          <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200&auto=format&fit=crop')"></div>
+          <div class="prog-body">
+            <span class="eyebrow">Individuel</span>
+            <h3>Suivi Signature</h3>
+            <p>Accompagnement 1-to-1, séances en studio ou à domicile, ajustement hebdomadaire complet.</p>
+            <a href="#contact" class="prog-link">En savoir plus →</a>
+          </div>
+        </div>
+        <div class="prog-card">
+          <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=1200&auto=format&fit=crop')"></div>
+          <div class="prog-body">
+            <span class="eyebrow">Hybride</span>
+            <h3>Suivi Essentiel</h3>
+            <p>Deux séances en studio par mois, programme à distance, suivi nutritionnel léger.</p>
+            <a href="#contact" class="prog-link">En savoir plus →</a>
+          </div>
+        </div>
+        <div class="prog-card">
+          <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop')"></div>
+          <div class="prog-body">
+            <span class="eyebrow">Découverte</span>
+            <h3>Immersion 4 semaines</h3>
+            <p>Pour tester la méthode : un mois complet encadré, sans engagement au-delà.</p>
+            <a href="#contact" class="prog-link">En savoir plus →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACH -->
+  <section id="coach" style="background:var(--ivoire-deep);">
+    <div class="wrap coach">
+      <div class="coach-img reveal"></div>
+      <div class="reveal">
+        <span class="eyebrow">Le coach</span>
+        <p class="coach-quote">"Je ne cherche pas à pousser mes clients plus fort. Je cherche à les aider à tenir, semaine après semaine."</p>
+        <div class="coach-name">Elena Duval</div>
+        <div class="coach-role">Fondatrice de VOLTÉO — 12 ans d'accompagnement personnalisé</div>
+        <p class="coach-bio">Formée aux méthodes de préparation physique et à l'accompagnement comportemental, Elena a fondé VOLTÉO pour proposer une alternative aux logiques de performance à tout prix. Chaque suivi est pensé comme une relation de confiance, pas comme un programme figé.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÉSULTATS -->
+  <section class="resultats" id="resultats">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Résultats</span>
+        <h2>Ce que disent nos clients.</h2>
+      </div>
+    </div>
+    <div class="wrap reveal">
+      <div class="stats-row">
+        <div class="stat"><div class="num">92%</div><div class="lbl">Taux de suivi à 6 mois</div></div>
+        <div class="stat"><div class="num">4.9/5</div><div class="lbl">Satisfaction moyenne</div></div>
+        <div class="stat"><div class="num">120+</div><div class="lbl">Clients accompagnés</div></div>
+        <div class="stat"><div class="num">3</div><div class="lbl">Studios partenaires</div></div>
+      </div>
+      <div class="testimonial">
+        <blockquote>"Pour la première fois, je n'ai pas eu l'impression de suivre un programme, mais d'être vraiment accompagnée. Six mois plus tard, les habitudes sont toujours là."</blockquote>
+        <cite>— Camille R., suivi Signature depuis 8 mois</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-inner">
+      <div class="reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Commençons par un échange.</h2>
+        <p>Un appel de 20 minutes, sans engagement, pour comprendre vos objectifs et voir si VOLTÉO est le bon accompagnement pour vous.</p>
+        <div class="contact-detail"><span>Studio</span>12 rue des Tanneurs, Paris 75011</div>
+        <div class="contact-detail"><span>Téléphone</span>+33 1 84 60 22 15</div>
+        <div class="contact-detail"><span>Email</span>bonjour@volteo-studio.fr</div>
+      </div>
+      <form class="form-card reveal" onsubmit="event.preventDefault(); this.querySelector('.btn-primary').textContent='Demande envoyée ✓';">
+        <div class="field">
+          <label for="name">Nom</label>
+          <input id="name" type="text" required placeholder="Votre nom">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" required placeholder="vous@email.com">
+        </div>
+        <div class="field">
+          <label for="msg">Votre objectif</label>
+          <textarea id="msg" placeholder="Dites-nous en quelques mots ce que vous cherchez"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="#top" class="logo">VOLTÉO</a>
+      <ul class="footer-links">
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#programmes">Programmes</a></li>
+        <li><a href="#coach">Le Coach</a></li>
+        <li><a href="#resultats">Résultats</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VOLTÉO Studio — Tous droits réservés</span>
+      <span>Site par Nuvora Studio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+
+  document.querySelectorAll('.reveal, .pulse').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
