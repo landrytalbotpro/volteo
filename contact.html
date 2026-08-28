@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOLTÉO — Studio de coaching premium</title>
-<meta name="description" content="VOLTÉO, studio de coaching premium. Un accompagnement sur-mesure pour une transformation durable.">
+<title>Contact — VOLTÉO</title>
+<meta name="description" content="Réservez un appel découverte de 20 minutes avec VOLTÉO, studio de coaching premium à Paris.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -303,10 +303,10 @@
   <nav class="nav">
     <a href="index.html" class="logo">VOLTÉO</a>
     <ul class="nav-links" id="mainNav">
-      <li><a href="index.html" aria-current="page">Accueil</a></li>
+      <li><a href="index.html">Accueil</a></li>
       <li><a href="approche.html">Méthode &amp; Programmes</a></li>
       <li><a href="coach.html">Le Coach &amp; Résultats</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
     </ul>
     <div class="nav-cta">
       <a href="contact.html" class="btn btn-ghost">Réserver un appel</a>
@@ -319,99 +319,36 @@
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero" style="padding-bottom:0; padding-top:0;">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <span class="eyebrow">Studio de coaching premium</span>
-      <h1>Prenez le temps de<br>devenir qui vous êtes.</h1>
-      <p>VOLTÉO accompagne une transformation durable, à votre rythme — sans pression, sans injonction, avec la rigueur d'un vrai suivi sur-mesure.</p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn btn-primary">Réserver un appel découverte</a>
-        <a href="approche.html" class="btn btn-light">Découvrir la méthode</a>
-      </div>
-    </div>
-    <div class="scroll-cue">
-      <span>Scroll</span>
-      <span class="line"></span>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h1>Commençons par un échange.</h1>
     </div>
   </section>
 
-  <!-- MÉTHODE (teaser) -->
-  <section class="methode">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">La méthode</span>
-        <h2>Trois piliers, un seul rythme : le vôtre.</h2>
-        <p>Pas de programme générique. VOLTÉO construit un accompagnement qui s'ajuste à votre vie, votre énergie et vos objectifs réels.</p>
+  <section id="contact" style="padding-top:0;">
+    <div class="wrap contact-inner">
+      <div class="reveal">
+        <p style="color:var(--encre-soft); font-size:16px; max-width:42ch; margin-bottom:34px;">Un appel de 20 minutes, sans engagement, pour comprendre vos objectifs et voir si VOLTÉO est le bon accompagnement pour vous.</p>
+        <div class="contact-detail"><span>Studio</span>12 rue des Tanneurs, Paris 75011</div>
+        <div class="contact-detail"><span>Téléphone</span>+33 1 84 60 22 15</div>
+        <div class="contact-detail"><span>Email</span>bonjour@volteo-studio.fr</div>
       </div>
-    </div>
-    <div class="wrap reveal">
-      <div class="piliers">
-        <div class="pilier">
-          <svg class="pilier-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
-          <span class="tag">Écouter</span>
-          <h3>Un bilan sans jugement</h3>
-          <p>Premier échange approfondi sur votre corps, votre histoire et votre rythme de vie.</p>
+      <form class="form-card reveal" onsubmit="event.preventDefault(); this.querySelector('.btn-primary').textContent='Demande envoyée ✓';">
+        <div class="field">
+          <label for="name">Nom</label>
+          <input id="name" type="text" required placeholder="Votre nom">
         </div>
-        <div class="pilier">
-          <svg class="pilier-icon" viewBox="0 0 24 24"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg>
-          <span class="tag">Ajuster</span>
-          <h3>Un programme évolutif</h3>
-          <p>La méthode se réajuste chaque semaine selon vos retours.</p>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" required placeholder="vous@email.com">
         </div>
-        <div class="pilier">
-          <svg class="pilier-icon" viewBox="0 0 24 24"><path d="M5 4v16M5 4l14 5-14 5"/></svg>
-          <span class="tag">Ancrer</span>
-          <h3>Des habitudes qui durent</h3>
-          <p>Une transformation qui tient dans le temps, pas une performance ponctuelle.</p>
+        <div class="field">
+          <label for="msg">Votre objectif</label>
+          <textarea id="msg" placeholder="Dites-nous en quelques mots ce que vous cherchez"></textarea>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <svg class="pulse" viewBox="0 0 1180 34" preserveAspectRatio="none">
-      <path d="M0,17 C 150,17 180,4 220,17 C 260,30 290,17 340,17 L 840,17 C 890,17 920,4 960,17 C 1000,30 1030,17 1180,17"/>
-    </svg>
-  </div>
-
-  <!-- NAV CARDS -->
-  <section>
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">À découvrir</span>
-        <h2>Tout savoir avant de réserver.</h2>
-      </div>
-      <div class="programmes-grid reveal">
-        <a href="approche.html" class="prog-card" style="text-decoration:none;">
-          <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200&auto=format&fit=crop')"></div>
-          <div class="prog-body">
-            <span class="eyebrow">Méthode &amp; Programmes</span>
-            <h3>Trois formats, une même exigence</h3>
-            <p>Suivi Signature, Essentiel, ou Immersion 4 semaines.</p>
-            <span class="prog-link">Découvrir →</span>
-          </div>
-        </a>
-        <a href="coach.html" class="prog-card" style="text-decoration:none;">
-          <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1607962837359-5e7e89f86776?q=80&w=1400&auto=format&fit=crop')"></div>
-          <div class="prog-body">
-            <span class="eyebrow">Le Coach &amp; Résultats</span>
-            <h3>Elena Duval, fondatrice</h3>
-            <p>12 ans d'accompagnement personnalisé, 120+ clients suivis.</p>
-            <span class="prog-link">Découvrir →</span>
-          </div>
-        </a>
-        <a href="contact.html" class="prog-card" style="text-decoration:none;">
-          <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=1200&auto=format&fit=crop')"></div>
-          <div class="prog-body">
-            <span class="eyebrow">Contact</span>
-            <h3>Commençons par un échange</h3>
-            <p>Un appel de 20 minutes, sans engagement.</p>
-            <span class="prog-link">Réserver →</span>
-          </div>
-        </a>
-      </div>
+        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+      </form>
     </div>
   </section>
 
